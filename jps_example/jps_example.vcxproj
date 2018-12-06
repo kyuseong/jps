@@ -152,7 +152,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\jps-master\jps-master\BasePathfinder.hpp" />
+    <ClInclude Include="jps\BasePathfinder.hpp" />
     <ClInclude Include="jps\JPS.hpp" />
     <ClInclude Include="jps\PathfindingNode.hpp" />
     <ClInclude Include="jps\PathFindRule.hpp" />

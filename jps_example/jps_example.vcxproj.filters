@@ -45,7 +45,7 @@
     <ClInclude Include="jps\JPS.hpp">
       <Filter>jps</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\jps-master\jps-master\BasePathfinder.hpp">
+    <ClInclude Include="jps\BasePathfinder.hpp">
       <Filter>jps</Filter>
     </ClInclude>
   </ItemGroup>
