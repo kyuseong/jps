@@ -16,6 +16,7 @@ public:
 	PathFindRule_JPS(const GRID& g) : m_Grid(g)	{}
 	unsigned int FillNeighbors(const PathfindingNode *n, Position *wptr) const;
 	virtual Position Jump(const Position& p, const Position& src, const Position& EndPos);
+	void ChangedGrid(Position Start, Position End) {}
 
 protected:
 	virtual Position JumpD(Position p, int dx, int dy, const Position& EndPos);

@@ -4,7 +4,7 @@
 #include <vector>
 #include <algorithm>
 
-#include "Position.h"
+#include "Position.hpp"
 #include "PathfindingNode.hpp"
 
 #define ASSERT(x)

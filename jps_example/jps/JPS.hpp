@@ -4,9 +4,7 @@
 #include <unordered_map>
 #include <cmath>
 
-#define ASSERT(x)
-
-#include "Position.h"
+#include "Position.hpp"
 #include "PathfindingNode.hpp"
 #include "PriorityQueue.hpp"
 #include "PathFindRule.hpp"

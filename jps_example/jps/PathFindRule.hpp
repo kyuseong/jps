@@ -4,5 +4,6 @@
 #include "PathFindRuleAstar.hpp"
 #include "PathFindRuleJPS.hpp"
 #include "PathFindRuleJPSPlus.hpp"
+#include "PathFindRuleJPSPlusDynamic.hpp"
 
 #endif

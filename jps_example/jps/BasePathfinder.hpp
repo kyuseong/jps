@@ -16,24 +16,18 @@ enum ePATH_RESULT
 template <typename GRID, typename RULE>
 class BasePathFinder
 {
-	const GRID& m_Grid;		// 그리드(맵 정보)
-	RULE m_Rule;
-	PathfindingNode* m_EndNode;		// 마지막 노드
+	const GRID& m_Grid;					// 그리드(맵 정보)
+	RULE m_Rule;						// 길찾기 룰
+	PathfindingNode* m_EndNode;			// 마지막 노드
 	UnsortedPriorityQueue m_OpenList;	// 맵 리스트
-	PathfindingNode* m_NodeTable;
-	int m_NodeSize;
+	PathfindingNode* m_NodeTable;		// 사용 노드
+	int m_NodeSize;						// 사용 노드 사이즈
+	const int MAX_NODE_TABLE = 10000;
 public:
-	BasePathFinder(const GRID& g) : m_Grid(g), m_Rule(g), m_EndNode(nullptr)
-	{
-		const int MAX_NODE_TABLE = 10000;
-		m_NodeTable = new PathfindingNode[MAX_NODE_TABLE];
-		m_NodeSize = 0;
-	}
-
-	~BasePathFinder()
-	{
-		delete[] m_NodeTable;
-	}
+	// ctor
+	BasePathFinder(const GRID& g);
+	// dtor
+	~BasePathFinder();
 	// 길을 찾기
 	bool FindPath(PathArray& path, Position start, Position end, unsigned int Step = 0);
 	// 초기화 하기
@@ -42,8 +36,10 @@ public:
 	ePATH_RESULT NextStep();
 	// 종료 하기 - 길 만들어 내기 
 	bool Finish(PathArray& path, unsigned int step);
-	
+	// 확장된 노드 사이즈
 	size_t GetNodesExpanded() const { return m_NodeSize; }
+	// grid 정보 변경 되어짐
+	void ChangedGrid(Position Start, Position End);
 
 private:
 	// 노드 정보를 가지고 온다.
@@ -56,8 +52,28 @@ private:
 	bool FindStraight(PathfindingNode *start);
 };
 
+///////////////////////////////////////////////////////////////////////////////
+// ctor
+///////////////////////////////////////////////////////////////////////////////
+template <typename GRID, typename RULE>
+BasePathFinder<GRID, RULE>::BasePathFinder(const GRID& g) : m_Grid(g), m_Rule(g), m_EndNode(nullptr)
+{
+	m_NodeTable = new PathfindingNode[MAX_NODE_TABLE];
+	m_NodeSize = 0;
+}
 
+///////////////////////////////////////////////////////////////////////////////
+// dtor
+///////////////////////////////////////////////////////////////////////////////
+template <typename GRID, typename RULE>
+BasePathFinder<GRID, RULE>::~BasePathFinder()
+{
+	delete[] m_NodeTable;
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // 노드 구하기(생성)
+///////////////////////////////////////////////////////////////////////////////
 template <typename GRID, typename RULE>
 PathfindingNode *BasePathFinder<GRID, RULE>::GetNode(const Position& pos)
 {
@@ -68,7 +84,6 @@ PathfindingNode *BasePathFinder<GRID, RULE>::GetNode(const Position& pos)
 			return &m_NodeTable[i];
 		}
 	}
-
 
 	auto NewNode = &m_NodeTable[m_NodeSize++];
 	NewNode->Clear();
@@ -340,6 +355,12 @@ bool BasePathFinder<GRID, RULE>::FindStraight(PathfindingNode *n)
 		m_EndNode->parent = n;
 
 	return true;
+}
+
+template<typename GRID, typename RULE>
+void BasePathFinder<GRID, RULE>::ChangedGrid(Position Start, Position End)
+{
+	m_Rule.ChangedGrid(Start, End);
 }
 
 }

@@ -9,11 +9,16 @@ namespace Rule
 template <typename GRID>
 class PathFindRule_Normal
 {
-	GRID m_Grid;		// 그리드(맵 정보)
+	const GRID& m_Grid;		// 그리드(맵 정보)
 public:
-	PathFindRule_Normal(GRID g) : m_Grid(g) {}
+	PathFindRule_Normal(const GRID& g) : m_Grid(g) {}
+	// 이웃 노드를 채워주세요
 	unsigned int FillNeighbors(const PathfindingNode *n, Position *wptr) const;
+	// 점프 할수 있으면 점프해
 	Position Jump(const Position& p, const Position& src, const Position& EndPos) { return p; }
+	// grid 정보 변경 되어짐
+	void ChangedGrid(Position Start, Position End) {}
+
 };
 
 #define CHECKGRID(dx, dy) (m_Grid(x+(dx), y+(dy)))
