@@ -159,7 +159,7 @@
     <ClInclude Include="jps\PathFindRuleAstar.hpp" />
     <ClInclude Include="jps\PathFindRuleJPS.hpp" />
     <ClInclude Include="jps\PathFindRuleJPSPlus.hpp" />
-    <ClInclude Include="jps\Position.h" />
+    <ClInclude Include="jps\Position.hpp" />
     <ClInclude Include="jps\PriorityQueue.hpp" />
     <ClInclude Include="pch.h" />
   </ItemGroup>

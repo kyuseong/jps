@@ -36,9 +36,6 @@
     <ClInclude Include="jps\PathFindRuleJPSPlus.hpp">
       <Filter>jps</Filter>
     </ClInclude>
-    <ClInclude Include="jps\Position.h">
-      <Filter>jps</Filter>
-    </ClInclude>
     <ClInclude Include="jps\PriorityQueue.hpp">
       <Filter>jps</Filter>
     </ClInclude>
@@ -46,6 +43,9 @@
       <Filter>jps</Filter>
     </ClInclude>
     <ClInclude Include="jps\BasePathfinder.hpp">
+      <Filter>jps</Filter>
+    </ClInclude>
+    <ClInclude Include="jps\Position.hpp">
       <Filter>jps</Filter>
     </ClInclude>
   </ItemGroup>
